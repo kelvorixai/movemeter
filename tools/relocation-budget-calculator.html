@@ -40,7 +40,70 @@
   }
   .share-btn:hover{ background:var(--teal-soft); color:var(--paper); }
   .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+  .faq{ margin-top:36px; }
+  .faq details{ border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-bottom:10px; background:var(--paper-raised); }
+  .faq summary{ cursor:pointer; font-weight:600; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--ink-soft); }
+  .faq details[open] summary::after{ content:"\2013"; }
+  .faq p{ margin-top:10px; font-size:14.5px; color:var(--ink-soft); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a Dubai relocation budget cover beyond rent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Housing setup costs (security deposit at 5% of annual rent, agency commission at 5%, Ejari registration ~AED 500, DEWA connection deposit ~AED 2,000), personal admin per person (~AED 2,250 for Emirates ID and medical testing), your flights and temporary housing budget, and furnishing if your new place isn't furnished."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is the security deposit when renting in Dubai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically 5% of the annual rent, refundable at the end of the tenancy subject to any deductions for damage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator include the annual rent itself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — it only covers the one-time setup costs layered on top of the rent cheques: the deposit, agency fee, registration, personal admin, and furnishing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Ejari and why does it cost money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ejari is Dubai's mandatory tenancy contract registration system. Registering it typically costs around AED 500 and is required before you can get DEWA (utilities) connected."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Dubai Relocation Budget Calculator",
+  "url": "https://kelvorixai.github.io/movemeter/tools/relocation-budget-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AED"
+  },
+  "description": "Free calculator that estimates the cash needed to relocate to Dubai before your first paycheck, covering housing setup, personal admin, flights, and furnishing."
+}
+</script>
 </head>
 <body>
 
@@ -105,6 +168,26 @@
       </ul>
       <p class="formula-note">This is a planning estimate, not a quote — actual costs vary by housing choice, family size, and employer relocation support. It doesn't include the rent cheques themselves, only the setup costs layered on top of them.</p>
     </div>
+
+    <div class="content faq" style="margin-top:36px;">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>What does a Dubai relocation budget cover beyond rent?</summary>
+        <p>Housing setup costs (security deposit at 5% of annual rent, agency commission at 5%, Ejari registration ~AED 500, DEWA connection deposit ~AED 2,000), personal admin per person (~AED 2,250 for Emirates ID and medical testing), your flights and temporary housing budget, and furnishing if your new place isn't furnished.</p>
+      </details>
+      <details>
+        <summary>How much is the security deposit when renting in Dubai?</summary>
+        <p>Typically 5% of the annual rent, refundable at the end of the tenancy subject to any deductions for damage.</p>
+      </details>
+      <details>
+        <summary>Does this calculator include the annual rent itself?</summary>
+        <p>No — it only covers the one-time setup costs layered on top of the rent cheques: the deposit, agency fee, registration, personal admin, and furnishing.</p>
+      </details>
+      <details>
+        <summary>What is Ejari and why does it cost money?</summary>
+        <p>Ejari is Dubai's mandatory tenancy contract registration system. Registering it typically costs around AED 500 and is required before you can get DEWA (utilities) connected.</p>
+      </details>
+    </div>
   </article>
 </main>
 
@@ -151,7 +234,7 @@
     var deposit = rent * 0.05;
     var agency = rent * 0.05;
     var housingSetup = deposit + agency + EJARI + DEWA;
-    var personalAdmin = family * ADMIN_PER_PERSON;
+   var personalAdmin = family * ADMIN_PER_PERSON;
     var total = flights + housingSetup + personalAdmin + furnishing;
 
     var lines = [];
@@ -184,4 +267,3 @@
 
 </body>
 </html>
-
